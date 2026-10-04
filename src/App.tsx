@@ -30,8 +30,13 @@ function App() {
     window.addEventListener('resize', checkMobile);
 
     const updateCursor = (e: MouseEvent) => {
-      setCursorPos({ x: e.clientX, y: e.clientY });
       const target = e.target as HTMLElement;
+      if (target.closest('nav')) {
+        setIsPointer(false);
+        setCursorPos({ x: -100, y: -100 });
+        return;
+      }
+      setCursorPos({ x: e.clientX, y: e.clientY });
       setIsPointer(Boolean(
         target.tagName === 'BUTTON' ||
         target.tagName === 'A' ||

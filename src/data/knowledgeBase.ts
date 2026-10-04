@@ -52,7 +52,7 @@ export const knowledgeBase: KnowledgeItem[] = [
   },
   {
     question: 'How can I contact Rayhan?',
-    answer: 'You can reach me through: Email: rayhanabdallah.dev@gmail.com, GitHub: @rayhanabdallah, LinkedIn: rayhanabdallah, Instagram: @rayhnx',
+    answer: 'You can reach me through: Email: rayhanabdallah.dev@gmail.com, GitHub: @rayhanabdallah, LinkedIn: rayhan-abdallah, Instagram: @rayhnx',
     keywords: ['contact', 'email', 'reach', 'connect', 'social'],
   },
   {

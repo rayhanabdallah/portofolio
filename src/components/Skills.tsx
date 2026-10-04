@@ -3,7 +3,7 @@ import { skills, exploring } from '../data/skills';
 
 export default function Skills() {
   return (
-    <section id="skills" className="px-6 py-20 bg-[#f4f3ec]/30 dark:bg-[#1f2028]/30">
+    <section id="skills" className="scroll-mt-24 px-6 py-20 bg-[#f4f3ec]/30 dark:bg-[#1f2028]/30">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

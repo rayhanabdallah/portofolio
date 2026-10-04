@@ -4,7 +4,7 @@ import { Terminal as TerminalIcon } from 'lucide-react';
 
 const commands: Record<string, string> = {
   who: `Rayhan Abdallah
-Informatics Student · Aspiring AI Engineer
+Informatics Student & AI Enthusiast
 Universitas Pasundan
 Based in Cimahi, Indonesia`,
   skills: `Programming : Python, JavaScript, HTML, CSS
@@ -16,7 +16,7 @@ Development : Git, GitHub, Web Development, Automation, Discord Bot Development`
 04. Productivity Web App    → HTML, CSS, JavaScript, Local Storage`,
   contact: `Email    : rayhanabdallah.dev@gmail.com
 GitHub   : github.com/rayhanabdallah
-LinkedIn : linkedin.com/in/rayhanabdallah
+LinkedIn : linkedin.com/in/rayhan-abdallah
 Instagram: @rayhnx`,
   hello: `Hey 👋 Welcome to Rayhan's portfolio.`,
   future: `Current destination: AI Engineer.

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function About() {
   return (
-    <section className="px-6 py-20">
+    <section id="about" className="scroll-mt-24 px-6 py-20">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -38,7 +38,7 @@ export default function About() {
           </div>
           <div className="bg-white dark:bg-[#1f2028] border border-[#e5e4e7] dark:border-[#2e303a] rounded-lg p-6">
             <h3 className="font-semibold text-[#08060d] dark:text-[#f3f4f6] mb-2">Current Goal</h3>
-            <p className="text-[#aa3bff] dark:text-[#c084fc] text-sm">Aspiring AI Engineer</p>
+            <p className="text-[#aa3bff] dark:text-[#c084fc] text-sm">Informatics Student & AI Enthusiast</p>
           </div>
           <div className="bg-white dark:bg-[#1f2028] border border-[#e5e4e7] dark:border-[#2e303a] rounded-lg p-6">
             <h3 className="font-semibold text-[#08060d] dark:text-[#f3f4f6] mb-2">Status</h3>

@@ -22,7 +22,7 @@ export default function Certifications() {
   };
 
   return (
-    <section id="certificates" className="px-6 py-20">
+    <section id="certificates" className="scroll-mt-24 px-6 py-20">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

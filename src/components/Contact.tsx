@@ -19,7 +19,7 @@ export default function Contact() {
     {
       name: 'LinkedIn',
       icon: <Linkedin size={20} />,
-      url: 'https://linkedin.com/in/rayhanabdallah',
+      url: 'https://www.linkedin.com/in/rayhan-abdallah/',
       username: 'rayhanabdallah'
     },
     {
@@ -31,7 +31,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="px-6 py-20 bg-[#f4f3ec]/30 dark:bg-[#1f2028]/30">
+    <section id="contact" className="scroll-mt-24 px-6 py-20 bg-[#f4f3ec]/30 dark:bg-[#1f2028]/30">
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

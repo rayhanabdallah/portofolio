@@ -3,7 +3,7 @@ import { journey } from '../data/journey';
 
 export default function Journey() {
   return (
-    <section id="journey" className="px-6 py-20 bg-[#f4f3ec]/30 dark:bg-[#1f2028]/30">
+    <section id="journey" className="scroll-mt-24 px-6 py-20 bg-[#f4f3ec]/30 dark:bg-[#1f2028]/30">
       <div className="max-w-3xl mx-auto">
         <h2 className="text-4xl font-bold text-center text-[#08060d] dark:text-[#f3f4f6] mb-16">
           My Journey

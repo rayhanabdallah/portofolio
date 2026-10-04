@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const sections = [
-  { id: 'home', label: 'About' },
+  { id: 'about', label: 'About' },
   { id: 'projects', label: 'Projects' },
   { id: 'skills', label: 'Skills' },
   { id: 'education', label: 'Education' },
@@ -12,44 +12,86 @@ const sections = [
   { id: 'contact', label: 'Contact' },
 ];
 
+function getClosestSection(fallback: string) {
+  const focusY = 120;
+  let closestId = fallback;
+  let closestDistance = Number.POSITIVE_INFINITY;
+
+  sections.forEach(({ id }) => {
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    const rect = element.getBoundingClientRect();
+    const distance = Math.abs(rect.top - focusY);
+    if (rect.top <= window.innerHeight && rect.bottom >= 0 && distance < closestDistance) {
+      closestDistance = distance;
+      closestId = id;
+    }
+  });
+
+  return closestId;
+}
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState('about');
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const activeSectionRef = useRef(activeSection);
+  const isClickScrollingRef = useRef(false);
+  const clickScrollTimeoutRef = useRef<number | null>(null);
+  const frameRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const updateNavigation = () => {
+      frameRef.current = null;
+
       const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
       setScrollProgress(scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0);
       setIsScrolled(window.scrollY > 20);
 
-      let current = 'home';
-      sections.forEach(({ id }) => {
-        const element = document.getElementById(id);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          const offset = rect.top + window.scrollY - 180;
-          if (window.scrollY >= offset) {
-            current = id;
-          }
-        }
-      });
-      setActiveSection(current);
+      if (isClickScrollingRef.current) return;
+
+      const bottomOffset = document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
+      const nextActive = bottomOffset <= 8 ? 'contact' : getClosestSection(activeSectionRef.current);
+
+      if (activeSectionRef.current !== nextActive) {
+        activeSectionRef.current = nextActive;
+        setActiveSection(nextActive);
+      }
     };
 
-    handleScroll();
+    const handleScroll = () => {
+      if (frameRef.current === null) {
+        frameRef.current = window.requestAnimationFrame(updateNavigation);
+      }
+    };
+
+    updateNavigation();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current);
+      if (clickScrollTimeoutRef.current !== null) window.clearTimeout(clickScrollTimeoutRef.current);
+    };
   }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (!element) return;
+
+    isClickScrollingRef.current = true;
+    activeSectionRef.current = id;
+    setActiveSection(id);
+    setIsOpen(false);
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    if (clickScrollTimeoutRef.current !== null) window.clearTimeout(clickScrollTimeoutRef.current);
+    clickScrollTimeoutRef.current = window.setTimeout(() => {
+      isClickScrollingRef.current = false;
+      activeSectionRef.current = id;
       setActiveSection(id);
-      setIsOpen(false);
-    }
+    }, 700);
   };
 
   return (
@@ -63,7 +105,7 @@ export default function Navbar() {
       </div>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <button
-          onClick={() => scrollToSection('home')}
+          onClick={() => scrollToSection('about')}
           className="text-xl font-semibold text-[#08060d] dark:text-[#f3f4f6] hover:opacity-75 transition-opacity"
         >
           Rayhan Abdallah

@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { MapPin, ArrowRight } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 
 interface EducationItem {
   id: string;
@@ -68,7 +68,7 @@ export default function Education() {
   const isInView = useInView(containerRef, { once: true, margin: '-10% 0px' });
 
   return (
-    <section id="education" className="px-6 py-24 bg-[#f4f3ec]/40 dark:bg-[#16171d]/40 relative overflow-hidden">
+    <section id="education" className="scroll-mt-24 px-6 py-24 bg-[#f4f3ec]/40 dark:bg-[#16171d]/40 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -120,16 +120,16 @@ export default function Education() {
                 {/* Node & Logo */}
                 <div className="relative flex-shrink-0 z-10 flex flex-col items-center lg:items-start lg:block">
                   <div className="relative group/logo">
-                    <div className={`w-16 h-16 rounded-2xl bg-white dark:bg-[#1f2028] border-2 transition-all duration-500 ease-out flex items-center justify-center shadow-sm overflow-hidden p-2
+                    <div className={`w-16 h-16 rounded-2xl bg-white dark:bg-[#1f2028] border-2 transition-all duration-300 ease-out flex items-center justify-center shadow-sm overflow-hidden p-2 group-hover:scale-105
                       ${item.highlight 
-                        ? 'border-[#aa3bff] dark:border-[#c084fc] shadow-[0_0_15px_rgba(170,59,255,0.2)]' 
-                        : 'border-[#e5e4e7] dark:border-[#2e303a] group-hover:border-[#aa3bff]/50 dark:group-hover:border-[#c084fc]/50'
+                        ? 'border-[#aa3bff] dark:border-[#c084fc] shadow-[0_0_15px_rgba(170,59,255,0.2)] group-hover:shadow-[0_0_18px_rgba(170,59,255,0.28)] dark:group-hover:shadow-[0_0_18px_rgba(192,132,252,0.24)]' 
+                        : 'border-[#e5e4e7] dark:border-[#2e303a] group-hover:border-[#aa3bff]/60 dark:group-hover:border-[#c084fc]/60 group-hover:shadow-[0_0_16px_rgba(170,59,255,0.16)] dark:group-hover:shadow-[0_0_16px_rgba(192,132,252,0.14)]'
                       }`}
                     >
                       <img 
                         src={item.logo} 
                         alt={item.title}
-                        className="w-full h-full object-contain grayscale opacity-80 group-hover/logo:grayscale-0 group-hover/logo:opacity-100 group-hover/logo:scale-105 transition-all duration-500 ease-out"
+                        className="w-full h-full object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover/logo:grayscale-0 group-hover/logo:opacity-100 group-hover/logo:scale-105 transition-all duration-300 ease-out"
                         loading="lazy"
                       />
                     </div>
@@ -208,9 +208,6 @@ export default function Education() {
                     )}
                   </div>
 
-                  <div className="absolute bottom-5 right-5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 hidden sm:block">
-                    <ArrowRight size={16} className="text-[#aa3bff] dark:text-[#c084fc]" />
-                  </div>
                 </div>
               </motion.div>
             ))}

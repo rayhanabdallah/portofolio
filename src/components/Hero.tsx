@@ -75,7 +75,7 @@ export default function Hero() {
           </motion.h2>
 
           <p className="text-sm font-semibold tracking-wider uppercase text-[#aa3bff] dark:text-[#c084fc] mb-6">
-            Informatics Student · Aspiring AI Engineer
+            Informatics Student & AI Enthusiast
           </p>
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-[#08060d] dark:text-[#f3f4f6] leading-[1.08] tracking-tight mb-6">
@@ -122,7 +122,7 @@ export default function Hero() {
               <Github size={18} className="text-[#08060d] dark:text-[#f3f4f6]" />
             </a>
             <a
-              href="https://linkedin.com/in/rayhanabdallah"
+              href="https://www.linkedin.com/in/rayhan-abdallah/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2.5 bg-[#f4f3ec] dark:bg-[#1f2028] hover:bg-[#e5e4e7] dark:hover:bg-[#2e303a] rounded-lg transition-colors"
@@ -177,7 +177,7 @@ export default function Hero() {
                 {!imgError ? (
                   <img
                     src="./images/profile.jpg"
-                    alt="Rayhan Abdallah - Informatics Student & Aspiring AI Engineer"
+                    alt="Rayhan Abdallah - Informatics Student & AI Enthusiast"
                     onError={() => setImgError(true)}
                     className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                     loading="eager"
