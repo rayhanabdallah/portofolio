@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --text: #6b6375;
+    --text-h: #08060d;
+    --bg: #fff;
+    --border: #e5e4e7;
+    --code-bg: #f4f3ec;
+    --accent: #aa3bff;
+    --accent-bg: rgba(170, 59, 255, 0.1);
+    --accent-border: rgba(170, 59, 255, 0.5);
+    --social-bg: rgba(244, 243, 236, 0.5);
+    --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+    --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+    --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+    --mono: ui-monospace, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text: #9ca3af;
+      --text-h: #f3f4f6;
+      --bg: #16171d;
+      --border: #2e303a;
+      --code-bg: #1f2028;
+      --accent: #c084fc;
+      --accent-bg: rgba(192, 132, 252, 0.15);
+      --accent-border: rgba(192, 132, 252, 0.5);
+      --social-bg: rgba(47, 48, 58, 0.5);
+      --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    }
+  }
+
+  body {
+    @apply bg-white dark:bg-[#16171d] text-[#6b6375] dark:text-[#9ca3af] font-sans;
+    font-family: var(--sans);
+    font-size: 18px;
+    line-height: 145%;
+    letter-spacing: 0.18px;
+    color-scheme: light dark;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium text-[#08060d] dark:text-[#f3f4f6];
+    font-family: var(--heading);
+  }
+
+  h1 {
+    @apply text-5xl md:text-6xl -tracking-wide;
+    font-size: 56px;
+    letter-spacing: -1.68px;
+    margin: 32px 0;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl -tracking-wider;
+    font-size: 24px;
+    line-height: 118%;
+    letter-spacing: -0.24px;
+    margin: 0 0 8px;
+  }
+
+  code {
+    @apply font-mono text-sm bg-[#f4f3ec] dark:bg-[#1f2028] text-[#08060d] dark:text-[#f3f4f6] rounded px-2 py-1;
+    font-family: var(--mono);
+  }
+
+  #root {
+    @apply max-w-7xl mx-auto border-l border-r border-[#e5e4e7] dark:border-[#2e303a] min-h-screen flex flex-col;
+    width: 1126px;
+    max-width: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-[#08060d] dark:bg-[#f3f4f6] text-white dark:text-[#08060d] rounded-lg font-medium transition-all duration-300 hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 border border-[#e5e4e7] dark:border-[#2e303a] text-[#08060d] dark:text-[#f3f4f6] rounded-lg font-medium transition-all duration-300 hover:bg-[#f4f3ec] dark:hover:bg-[#1f2028];
+  }
+
+  .btn-accent {
+    @apply px-6 py-3 bg-[#aa3bff] dark:bg-[#c084fc] text-white rounded-lg font-medium transition-all duration-300 hover:shadow-lg;
+  }
+
+  .card {
+    @apply bg-white dark:bg-[#1f2028] border border-[#e5e4e7] dark:border-[#2e303a] rounded-lg p-6;
+  }
+
+  .glass {
+    @apply bg-white/80 dark:bg-[#1f2028]/80 backdrop-blur-md border border-[#e5e4e7] dark:border-[#2e303a]/50;
+  }
+}
