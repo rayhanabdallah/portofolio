@@ -39,6 +39,13 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Verify build output
+        run: |
+          test -f dist/index.html
+          test -d dist/assets
+          grep -q 'id="root"' dist/index.html
+          grep -q '/portofolio/assets/' dist/index.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
